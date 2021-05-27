@@ -10,7 +10,7 @@ import javax.security.auth.login.LoginException;
 
 @Configuration
 public class BotConfiguration {
-    private static final String TOKEN = "ODI0Njk0MjI1ODY5NzMzODk5.YFzGWQ.9H1uQSxbipKVK5XdvMQ0BmlL0OM";
+    private static final String TOKEN = "TOKEN";
 
     @Autowired
     MessageService messageService;
