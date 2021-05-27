@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class MessageService {
@@ -16,10 +19,14 @@ public class MessageService {
         this.messageRepository = messageRepository;
     }
 
-    //potrzebujemy metody do zapisu wiadomośći z discorda w bazie
-    // musi zapisać nowy obiekt SupportMessage w bazie - jego wartości pobierzemy z SupportMessageDto,
-    // które te wartości pobierze z BotEventu
-
+    public List<MessageDto> getMessages() {
+        return messageRepository.findAll().stream()
+                .map(supportMessage -> new MessageDto(supportMessage.getUuid(),
+                        supportMessage.getAuthor(),
+                        supportMessage.getMessage(),
+                        supportMessage.getCreated().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))))
+                .collect(Collectors.toList());
+    }
 
     public void saveMessage(final SupportMessageDto messageDto) {
         final SupportMessage supportMessage = new SupportMessage();

@@ -19,7 +19,6 @@ public class SupportMessage {
     private LocalDateTime created;
     private boolean isClosed = false;
 
-
     public Long getId() {
         return id;
     }

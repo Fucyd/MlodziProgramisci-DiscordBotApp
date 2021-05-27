@@ -16,11 +16,8 @@ public class MessageController {
     }
 
     @GetMapping("/")
-    public String showAllSupportMessages(Model model){
-        //Musze stworzyć plik HTML, który za pomocą Thymeleaf wyświetli wartości na stronie.
-        //musze odwołać się do serwisu, w którym musze wcześniej zrobić metodę,
-        // która wyciągnie z bazy wiadomości i zwróci je w formie listy do controllera,
-        // który potem przekaże te liste do pliku HTML w formie Atrybutu
-        return "nazwa pliku HTML";
+    public String showAllSupportMessages(Model model) {
+        model.addAttribute("messages", messageService.getMessages());
+        return "show-messages";
     }
 }

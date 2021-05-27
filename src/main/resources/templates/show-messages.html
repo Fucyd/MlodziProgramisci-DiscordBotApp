@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>-->
+    <link href="webjars/bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <div>
+        <!-- Tutaj będzie panel boczny strony -->
+    </div>
+    <div class="bg-light m-auto">
+        <div class="d-flex justify-content-center">
+            <h1 class="font-weight-bold mt-2">Wszystkie wiadomości do supportu</h1>
+        </div>
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Czas wysłania</th>
+                    <th scope="col">Wiadomość</th>
+                </tr>
+                </thead>
+                <tbody th:each="message : ${messages}">
+                <tr>
+                    <td><p th:text="${message.author}">Nazwa Szkoły </p></td>
+                    <td><p th:text="${message.created}">Miasto </p></td>
+                    <td><p th:text="${message.message}">Miasto </p></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>
